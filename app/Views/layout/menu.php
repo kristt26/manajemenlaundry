@@ -11,6 +11,12 @@
             <span class="menu-title">Kategori</span>
         </a>
     </li>
+    <li class="nav-item">
+        <a class="nav-link" href="<?= base_url("layanan")?>">
+            <i class="mdi mdi-shopping menu-icon"></i>
+            <span class="menu-title">Layanan</span>
+        </a>
+    </li>
     <!-- <li class="nav-item">
         <a class="nav-link" data-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">
             <i class="mdi mdi-crosshairs-gps menu-icon"></i>

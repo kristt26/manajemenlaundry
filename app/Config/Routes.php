@@ -37,6 +37,13 @@ $routes->group('kategori', function($routes){
     $routes->put('put', 'Admin\Kategori::update');
     $routes->delete('delete/(:any)', 'Admin\Kategori::delete/$1');
 });
+$routes->group('layanan', function($routes){
+    $routes->get('/', 'Admin\Layanan::index');
+    $routes->get('read', 'Admin\Layanan::read');
+    $routes->post('post', 'Admin\Layanan::create');
+    $routes->put('put', 'Admin\Layanan::update');
+    $routes->delete('delete/(:any)', 'Admin\Layanan::delete/$1');
+});
 
 /*
  * --------------------------------------------------------------------
