@@ -108,7 +108,7 @@ function kategoriServices($http, $q, helperServices, AuthService, pesan) {
             headers: AuthService.getHeader()
         }).then(
             (res) => {
-                service.data.laboran.push(res.data);
+                service.data.push(res.data);
                 def.resolve(res.data);
             },
             (err) => {
@@ -130,12 +130,7 @@ function kategoriServices($http, $q, helperServices, AuthService, pesan) {
             (res) => {
                 var data = service.data.find(x => x.id == param.id);
                 if (data) {
-                    data.nama = param.nama;
-                    data.ukuran = param.ukuran;
-                    data.kapasitas = param.kapasitas;
-                    data.bad = param.bad;
-                    data.service = param.service;
-                    data.price = param.price;
+                    data.kategori = param.kategori;
                 }
                 def.resolve(res.data);
             },
@@ -146,14 +141,16 @@ function kategoriServices($http, $q, helperServices, AuthService, pesan) {
         return def.promise;
     }
 
-    function deleted(id) {
+    function deleted(param) {
         var def = $q.defer();
         $http({
             method: 'delete',
-            url: controller + "/delete/" + id,
+            url: controller + "/delete/" + param.id,
             headers: AuthService.getHeader()
         }).then(
             (res) => {
+                var index = service.data.indexOf(param);
+                service.data.splice(index, 1);
                 def.resolve(res.data);
             },
             (err) => {
