@@ -13,8 +13,14 @@
     </li>
     <li class="nav-item">
         <a class="nav-link" href="<?= base_url("layanan")?>">
-            <i class="mdi mdi-shopping menu-icon"></i>
+            <i class="mdi mdi-image-filter-drama menu-icon"></i>
             <span class="menu-title">Layanan</span>
+        </a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="<?= base_url("harga")?>">
+            <i class="mdi mdi-currency-usd menu-icon"></i>
+            <span class="menu-title">Harga</span>
         </a>
     </li>
     <!-- <li class="nav-item">

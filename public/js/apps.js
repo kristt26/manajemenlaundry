@@ -12,8 +12,8 @@ angular.module('apps', [
     'ngSanitize',
     'ui.router',
     'ui.select2',
-    'tooltips'
-
+    'tooltips',
+    'ui.utils.masks'
 ])
 
     // .run(['uiSelect2Config', function(uiSelect2Config) {
