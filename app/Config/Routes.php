@@ -30,6 +30,15 @@ $routes->set404Override();
 // We get a performance increase by specifying the default
 // route since we don't have to scan directories.
 $routes->get('/', 'Home::index');
+
+$routes->group('auth', function($routes){
+    $routes->get('/', 'Auth::index');
+    $routes->post('login', 'Auth::login');
+    $routes->get('registration', 'Auth::reg');
+    $routes->post('daftar', 'Auth::daftar');
+    $routes->get('logout', 'Auth::logout');
+});
+
 $routes->group('kategori', function($routes){
     $routes->get('/', 'Admin\Kategori::index');
     $routes->get('read', 'Admin\Kategori::read');
@@ -52,6 +61,18 @@ $routes->group('harga', function($routes){
     $routes->post('post', 'Admin\Harga::create');
     $routes->put('put', 'Admin\Harga::update');
     $routes->delete('delete/(:any)', 'Admin\Harga::delete/$1');
+});
+
+
+
+// Customer
+$routes->group('pesanan', function($routes){
+    $routes->get('/', 'Customer\Pesanan::index');
+    $routes->get('read', 'Customer\Pesanan::read');
+    $routes->get('add', 'Customer\Pesanan::add');
+    $routes->post('post', 'Customer\Pesanan::create');
+    $routes->put('put', 'Customer\Pesanan::update');
+    $routes->delete('delete/(:any)', 'Customer\Pesanan::delete/$1');
 });
 
 /*

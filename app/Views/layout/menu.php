@@ -5,24 +5,35 @@
             <span class="menu-title">Dashboard</span>
         </a>
     </li>
-    <li class="nav-item">
-        <a class="nav-link" href="<?= base_url("kategori")?>">
-            <i class="mdi mdi-reproduction menu-icon"></i>
-            <span class="menu-title">Kategori</span>
-        </a>
-    </li>
-    <li class="nav-item">
-        <a class="nav-link" href="<?= base_url("layanan")?>">
-            <i class="mdi mdi-image-filter-drama menu-icon"></i>
-            <span class="menu-title">Layanan</span>
-        </a>
-    </li>
-    <li class="nav-item">
-        <a class="nav-link" href="<?= base_url("harga")?>">
-            <i class="mdi mdi-currency-usd menu-icon"></i>
-            <span class="menu-title">Harga</span>
-        </a>
-    </li>
+    <?php if (session()->get('akses') == 'Admin') : ?>
+        <li class="nav-item">
+            <a class="nav-link" href="<?= base_url("kategori") ?>">
+                <i class="mdi mdi-reproduction menu-icon"></i>
+                <span class="menu-title">Kategori</span>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="<?= base_url("layanan") ?>">
+                <i class="mdi mdi-image-filter-drama menu-icon"></i>
+                <span class="menu-title">Layanan</span>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="<?= base_url("harga") ?>">
+                <i class="mdi mdi-currency-usd menu-icon"></i>
+                <span class="menu-title">Harga</span>
+            </a>
+        </li>
+    <?php endif; ?>
+
+    <?php if (session()->get('akses') == 'Customer') : ?>
+        <li class="nav-item">
+            <a class="nav-link" href="<?= base_url("pesanan") ?>">
+                <i class="mdi mdi-cart-outline menu-icon"></i>
+                <span class="menu-title">Pesanan Laundry</span>
+            </a>
+        </li>
+    <?php endif; ?>
     <!-- <li class="nav-item">
         <a class="nav-link" data-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">
             <i class="mdi mdi-crosshairs-gps menu-icon"></i>

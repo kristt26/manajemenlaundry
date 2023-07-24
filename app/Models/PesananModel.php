@@ -13,5 +13,5 @@ class PesananModel extends Model
     protected $returnType       = 'object';
     protected $useSoftDeletes   = false;
     protected $protectFields    = true;
-    protected $allowedFields    = ['customer_id', 'layanan_id', 'tanggal', 'status'];
+    protected $allowedFields    = ['customer_id', 'kode', 'layanan_id', 'tanggal', 'status'];
 }
