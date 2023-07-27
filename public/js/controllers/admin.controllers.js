@@ -5,6 +5,7 @@ angular.module('adminctrl', [])
     .controller('layananController', layananController)
     .controller('hargaController', hargaController)
     .controller('pesananController', pesananController)
+    .controller('transaksiController', transaksiController)
     ;
 
 function dashboardController($scope, dashboardServices) {
@@ -153,6 +154,56 @@ function hargaController($scope, hargaServices, pesan) {
         pesan.dialog('Anda yakin ?', 'Ya', 'Tidak').then((x) => {
             $.LoadingOverlay('show');
             hargaServices.deleted(param).then(res => {
+                pesan.Success("Process Success");
+                $.LoadingOverlay('hide');
+            })
+        })
+    }
+
+}
+
+function transaksiController($scope, transaksiServices, pesan) {
+    $scope.$emit("SendUp", "Laboran");
+    $scope.datas = {};
+    $scope.model = {};
+    $scope.dataKamar = {};
+    $.LoadingOverlay('show');
+    transaksiServices.get().then((res) => {
+        $scope.datas = res;
+        console.log(res);
+        $.LoadingOverlay('hide');
+    })
+
+    $scope.save = () => {
+        pesan.dialog('Anda Yakin ?', 'Ya', 'Tidak').then(x => {
+            $.LoadingOverlay('show');
+            if($scope.model.id){
+                transaksiServices.put($scope.model).then(res => {
+                    pesan.Success("Process Success");
+                    $scope.model = {};
+                    $.LoadingOverlay('hide');
+                })
+            }else{
+                transaksiServices.post($scope.model).then(res => {
+                    pesan.Success("Process Success");
+                    $scope.model = {};
+                    $.LoadingOverlay('hide');
+                })
+
+            }
+        })
+    }
+
+    $scope.edit = (param)=>{
+        $scope.model = angular.copy(param);
+        $scope.kategori = $scope.datas.kategori.find(x=>x.id = param.kategori_id);
+        $scope.layanan = $scope.datas.layanan.find(x=>x.id = param.layanan_id);
+    }
+
+    $scope.delete = (param) => {
+        pesan.dialog('Anda yakin ?', 'Ya', 'Tidak').then((x) => {
+            $.LoadingOverlay('show');
+            transaksiServices.deleted(param).then(res => {
                 pesan.Success("Process Success");
                 $.LoadingOverlay('hide');
             })

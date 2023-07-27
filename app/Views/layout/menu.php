@@ -24,6 +24,12 @@
                 <span class="menu-title">Harga</span>
             </a>
         </li>
+        <li class="nav-item">
+            <a class="nav-link" href="<?= base_url("transaksi") ?>">
+                <i class="mdi mdi-currency-usd menu-icon"></i>
+                <span class="menu-title">Transaksi</span>
+            </a>
+        </li>
     <?php endif; ?>
 
     <?php if (session()->get('akses') == 'Customer') : ?>

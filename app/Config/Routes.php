@@ -29,7 +29,7 @@ $routes->set404Override();
 
 // We get a performance increase by specifying the default
 // route since we don't have to scan directories.
-$routes->get('/', 'Home::index');
+$routes->get('/', 'Home::index', ['filter'=>'auth']);
 
 $routes->group('auth', function($routes){
     $routes->get('/', 'Auth::index');
@@ -39,7 +39,7 @@ $routes->group('auth', function($routes){
     $routes->get('logout', 'Auth::logout');
 });
 
-$routes->group('kategori', function($routes){
+$routes->group('kategori', ['filter'=>'auth'], function($routes){
     $routes->get('/', 'Admin\Kategori::index');
     $routes->get('read', 'Admin\Kategori::read');
     $routes->post('post', 'Admin\Kategori::create');
@@ -47,7 +47,7 @@ $routes->group('kategori', function($routes){
     $routes->delete('delete/(:any)', 'Admin\Kategori::delete/$1');
 });
 
-$routes->group('layanan', function($routes){
+$routes->group('layanan', ['filter'=>'auth'], function($routes){
     $routes->get('/', 'Admin\Layanan::index');
     $routes->get('read', 'Admin\Layanan::read');
     $routes->post('post', 'Admin\Layanan::create');
@@ -55,7 +55,7 @@ $routes->group('layanan', function($routes){
     $routes->delete('delete/(:any)', 'Admin\Layanan::delete/$1');
 });
 
-$routes->group('harga', function($routes){
+$routes->group('harga', ['filter'=>'auth'], function($routes){
     $routes->get('/', 'Admin\Harga::index');
     $routes->get('read', 'Admin\Harga::read');
     $routes->post('post', 'Admin\Harga::create');
@@ -63,10 +63,18 @@ $routes->group('harga', function($routes){
     $routes->delete('delete/(:any)', 'Admin\Harga::delete/$1');
 });
 
+$routes->group('transaksi', ['filter'=>'auth'], function($routes){
+    $routes->get('/', 'Admin\Transaksi::index');
+    $routes->get('read', 'Admin\Transaksi::read');
+    $routes->post('post', 'Admin\Transaksi::create');
+    $routes->put('put', 'Admin\Transaksi::update');
+    $routes->delete('delete/(:any)', 'Admin\Transaksi::delete/$1');
+});
+
 
 
 // Customer
-$routes->group('pesanan', function($routes){
+$routes->group('pesanan', ['filter'=>'auth'], function($routes){
     $routes->get('/', 'Customer\Pesanan::index');
     $routes->get('read', 'Customer\Pesanan::read');
     $routes->get('add', 'Customer\Pesanan::add');
