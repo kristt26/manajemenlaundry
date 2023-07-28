@@ -55,7 +55,7 @@
             <li class="nav-item nav-profile dropdown border-0">
               <a class="nav-link dropdown-toggle" id="profileDropdown" href="#" data-toggle="dropdown">
                 <img class="nav-profile-img mr-2" alt="" src="<?= base_url()?>/assets/images/faces/face1.jpg" />
-                <span class="profile-name">Henry Klein</span>
+                <span class="profile-name"><?= session()->get('nama')?></span>
               </a>
               <div class="dropdown-menu navbar-dropdown w-100" aria-labelledby="profileDropdown">
                 <a class="dropdown-item" href="auth/logout">
