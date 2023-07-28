@@ -13,5 +13,5 @@ class DetailModel extends Model
     protected $returnType       = 'object';
     protected $useSoftDeletes   = false;
     protected $protectFields    = true;
-    protected $allowedFields    = ['pesanan_id', 'harga_id'];
+    protected $allowedFields    = ['pesanan_id', 'harga_id', 'jumlah'];
 }

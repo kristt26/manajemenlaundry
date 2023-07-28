@@ -409,6 +409,7 @@ function transaksiServices($http, $q, helperServices, AuthService, pesan) {
     service.data = [];
     return {
         get: get,
+        getAdd: getAdd,
         byId: byId,
         post: post,
         put: put,
@@ -420,6 +421,25 @@ function transaksiServices($http, $q, helperServices, AuthService, pesan) {
         $http({
             method: 'get',
             url: controller + 'read',
+            headers: AuthService.getHeader()
+        }).then(
+            (res) => {
+                service.data = res.data;
+                def.resolve(res.data);
+            },
+            (err) => {
+                pesan.error(err.data.message);
+                def.reject(err);
+            }
+        );
+        return def.promise;
+    }
+
+    function getAdd() {
+        var def = $q.defer();
+        $http({
+            method: 'get',
+            url: controller + 'readadd',
             headers: AuthService.getHeader()
         }).then(
             (res) => {
@@ -465,7 +485,7 @@ function transaksiServices($http, $q, helperServices, AuthService, pesan) {
                 def.resolve(res.data);
             },
             (err) => {
-                pesan.error(err.data.messages.error);
+                pesan.error(err.data.message);
                 $.LoadingOverlay('hide');
                 def.reject(err);
             }

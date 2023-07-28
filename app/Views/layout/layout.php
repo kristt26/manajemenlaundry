@@ -6,13 +6,13 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
   <title>Breeze Admin</title>
-  <link rel="stylesheet" href="assets/vendors/mdi/css/materialdesignicons.min.css" />
-  <link rel="stylesheet" href="assets/vendors/flag-icon-css/css/flag-icon.min.css" />
-  <link rel="stylesheet" href="assets/vendors/css/vendor.bundle.base.css" />
-  <link rel="stylesheet" href="assets/vendors/select2/select2.min.css" />
-  <link rel="stylesheet" href="assets/vendors/select2-bootstrap-theme/select2-bootstrap.min.css" />
-  <link rel="stylesheet" href="assets/css/style.css" />
-  <link rel="shortcut icon" href="assets/images/favicon.png" />
+  <link rel="stylesheet" href="<?= base_url()?>/assets/vendors/mdi/css/materialdesignicons.min.css" />
+  <link rel="stylesheet" href="<?= base_url()?>/assets/vendors/flag-icon-css/css/flag-icon.min.css" />
+  <link rel="stylesheet" href="<?= base_url()?>/assets/vendors/css/vendor.bundle.base.css" />
+  <link rel="stylesheet" href="<?= base_url()?>/assets/vendors/select2/select2.min.css" />
+  <link rel="stylesheet" href="<?= base_url()?>/assets/vendors/select2-bootstrap-theme/select2-bootstrap.min.css" />
+  <link rel="stylesheet" href="<?= base_url()?>/assets/css/style.css" />
+  <link rel="shortcut icon" href="<?= base_url()?>/assets/images/favicon.png" />
   <link href="<?= base_url() ?>/libs/angular-datatables/dist/css/dataTables.bootstrap4.min.css" rel="stylesheet" />
   <link rel="stylesheet" href="<?= base_url() ?>libs/angular-tooltips/dist/angular-tooltips.css" />
   <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
@@ -22,8 +22,8 @@
   <div class="container-scroller">
     <nav class="sidebar sidebar-offcanvas" id="sidebar">
       <div class="text-center sidebar-brand-wrapper d-flex align-items-center">
-        <!-- <a class="sidebar-brand brand-logo" href="index.html"><img src="assets/images/logo.svg" alt="logo" /></a>
-        <a class="sidebar-brand brand-logo-mini pl-4 pt-3" href="index.html"><img src="assets/images/logo-mini.svg" alt="logo" /></a> -->
+        <!-- <a class="sidebar-brand brand-logo" href="index.html"><img src="<?= base_url()?>/assets/images/logo.svg" alt="logo" /></a>
+        <a class="sidebar-brand brand-logo-mini pl-4 pt-3" href="index.html"><img src="<?= base_url()?>/assets/images/logo-mini.svg" alt="logo" /></a> -->
         <a class="sidebar-brand brand-logo" href="index.html">Manajemen Laundry</a>
         <a class="sidebar-brand brand-logo-mini pl-4 pt-3" href="index.html">ML</a>
       </div>
@@ -47,14 +47,14 @@
       </div>
       <nav class="navbar col-lg-12 col-12 p-lg-0 fixed-top d-flex flex-row">
         <div class="navbar-menu-wrapper d-flex align-items-stretch justify-content-between">
-          <a class="navbar-brand brand-logo-mini align-self-center d-lg-none" href="index.html"><img src="assets/images/logo-mini.svg" alt="logo" /></a>
+          <a class="navbar-brand brand-logo-mini align-self-center d-lg-none" href="index.html"><img src="<?= base_url()?>/assets/images/logo-mini.svg" alt="logo" /></a>
           <button class="navbar-toggler navbar-toggler align-self-center mr-2" type="button" data-toggle="minimize">
             <i class="mdi mdi-menu"></i>
           </button>
           <ul class="navbar-nav navbar-nav-right ml-lg-auto">
             <li class="nav-item nav-profile dropdown border-0">
               <a class="nav-link dropdown-toggle" id="profileDropdown" href="#" data-toggle="dropdown">
-                <img class="nav-profile-img mr-2" alt="" src="assets/images/faces/face1.jpg" />
+                <img class="nav-profile-img mr-2" alt="" src="<?= base_url()?>/assets/images/faces/face1.jpg" />
                 <span class="profile-name">Henry Klein</span>
               </a>
               <div class="dropdown-menu navbar-dropdown w-100" aria-labelledby="profileDropdown">
@@ -95,15 +95,15 @@
     <!-- page-body-wrapper ends -->
   </div>
   <!-- container-scroller -->
-  <script src="assets/vendors/js/vendor.bundle.base.js"></script>
-  <script src="assets/vendors/select2/select2.min.js"></script>
-  <script src="assets/vendors/typeahead.js/typeahead.bundle.min.js"></script>
-  <script src="assets/js/off-canvas.js"></script>
-  <script src="assets/js/hoverable-collapse.js"></script>
-  <script src="assets/js/misc.js"></script>
-  <script src="assets/js/file-upload.js"></script>
-  <script src="assets/js/typeahead.js"></script>
-  <script src="assets/js/select2.js"></script>
+  <script src="<?= base_url()?>/assets/vendors/js/vendor.bundle.base.js"></script>
+  <script src="<?= base_url()?>/assets/vendors/select2/select2.min.js"></script>
+  <script src="<?= base_url()?>/assets/vendors/typeahead.js/typeahead.bundle.min.js"></script>
+  <script src="<?= base_url()?>/assets/js/off-canvas.js"></script>
+  <script src="<?= base_url()?>/assets/js/hoverable-collapse.js"></script>
+  <script src="<?= base_url()?>/assets/js/misc.js"></script>
+  <script src="<?= base_url()?>/assets/js/file-upload.js"></script>
+  <script src="<?= base_url()?>/assets/js/typeahead.js"></script>
+  <script src="<?= base_url()?>/assets/js/select2.js"></script>
   <script src="<?= base_url() ?>libs/angular/angular.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-sanitize/1.8.2/angular-sanitize.min.js" integrity="sha512-JkCv2gG5E746DSy2JQlYUJUcw9mT0vyre2KxE2ZuDjNfqG90Bi7GhcHUjLQ2VIAF1QVsY5JMwA1+bjjU5Omabw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/1.0.30/angular-ui-router.min.js" integrity="sha512-HdDqpFK+5KwK5gZTuViiNt6aw/dBc3d0pUArax73z0fYN8UXiSozGNTo3MFx4pwbBPldf5gaMUq/EqposBQyWQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>

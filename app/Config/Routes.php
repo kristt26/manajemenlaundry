@@ -65,7 +65,9 @@ $routes->group('harga', ['filter'=>'auth'], function($routes){
 
 $routes->group('transaksi', ['filter'=>'auth'], function($routes){
     $routes->get('/', 'Admin\Transaksi::index');
+    $routes->get('add', 'Admin\Transaksi::add');
     $routes->get('read', 'Admin\Transaksi::read');
+    $routes->get('readadd', 'Admin\Transaksi::readAdd');
     $routes->post('post', 'Admin\Transaksi::create');
     $routes->put('put', 'Admin\Transaksi::update');
     $routes->delete('delete/(:any)', 'Admin\Transaksi::delete/$1');
