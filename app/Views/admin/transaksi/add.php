@@ -122,11 +122,10 @@
                                         <td>{{$index+1}}</td>
                                         <td>{{item.kategori}}</td>
                                         <td>{{item.harga}}</td>
-                                        <td>{{item.jumlah}}</td>
+                                        <td><input type="number" class="form-control form-control-sm" ng-model="item.jumlah" ng-change="setHitung()"></td>
                                         <td class="text-right" width ="20%">{{item.total | currency}}</td>
                                         <td>
-                                            <button class="btn btn-warning btn-sm" ng-click="edit(item)"><i class="mdi mdi-lead-pencil"></i></button>
-                                            <button class="btn btn-danger btn-sm" ng-click="delete(item)"><i class="mdi mdi-delete"></i></button>
+                                            <button type="button" class="btn btn-danger btn-sm" ng-click="delete(item)"><i class="mdi mdi-delete"></i></button>
                                         </td>
                                     </tr>
                                 </tbody>

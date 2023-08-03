@@ -39,12 +39,12 @@ class Transaksi extends BaseController
 
     public function index()
     {
-        return view('admin/transaksi/index');
+        return view('admin/transaksi/index', ['title'=>'Daftar Transaksi']);
     }
 
     public function add()
     {
-        return view('admin/transaksi/add');
+        return view('admin/transaksi/add', ['title'=>'Tambah Transaksi']);
     }
 
     public function read(): object
@@ -84,7 +84,7 @@ class Transaksi extends BaseController
             $total = $param->trx->total;
             $bayar = $param->trx->bayar;
             $sisa = $param->trx->sisa;
-            $pesan ="Informasi Laundry \nkode pesan: $kode \nTagihan: $total \nBayar: $bayar \nSisa: $sisa \n";
+            $pesan = "Informasi Laundry \nkode pesan: $kode \nTagihan: $total \nBayar: $bayar \nSisa: $sisa \n";
             $this->conn->transComplete();
             $this->lib->sendWA($param->hp, $pesan);
             $this->lib->sendSMS($param->hp, $pesan);
@@ -99,8 +99,21 @@ class Transaksi extends BaseController
     public function update(): object
     {
         $param = $this->request->getJSON();
-        $this->harga->update($param->id, $param);
-        return $this->respondUpdated(true);
+        $customer = $this->customer->where("id", $param->customer_id)->first();
+        try {
+            $this->pesanan->update($param->id, ['status' => $param->status]);
+            if ($param->status !== 'Selesai')
+                $pesan = "Informasi Laundry \nStatus Laundry anda saat ini sedang di$param->status";
+            else
+                $pesan = "Informasi Laundry \nStatus Laundry anda telah selesai, anda dapat mengambil laundry anda!";
+    
+            $this->lib->sendWA($customer->hp, $pesan);
+            $this->lib->sendSMS($customer->hp, $pesan);
+            $this->conn->transComplete();
+            return $this->respondUpdated(true);
+        } catch (\Throwable $th) {
+            return $this->fail($th->getMessage());
+        }
     }
     public function delete($id): object
     {

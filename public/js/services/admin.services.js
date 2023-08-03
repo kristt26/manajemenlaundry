@@ -502,13 +502,13 @@ function transaksiServices($http, $q, helperServices, AuthService, pesan) {
             headers: AuthService.getHeader()
         }).then(
             (res) => {
-                var data = service.data.harga.find(x => x.id == param.id);
-                if (data) {
-                    data.layanan = param.layanan;
-                    data.kategori = param.kategori;
-                    data.harga = param.harga;
-                    data.satuan = param.satuan;
-                }
+                // var data = service.data.harga.find(x => x.id == param.id);
+                // if (data) {
+                //     data.layanan = param.layanan;
+                //     data.kategori = param.kategori;
+                //     data.harga = param.harga;
+                //     data.satuan = param.satuan;
+                // }
                 def.resolve(res.data);
             },
             (err) => {

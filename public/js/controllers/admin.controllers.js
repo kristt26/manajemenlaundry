@@ -180,20 +180,11 @@ function transaksiController($scope, transaksiServices, pesan) {
     $scope.save = () => {
         pesan.dialog('Anda Yakin ?', 'Ya', 'Tidak').then(x => {
             $.LoadingOverlay('show');
-            if ($scope.model.id) {
-                transaksiServices.put($scope.model).then(res => {
-                    pesan.Success("Process Success");
-                    $scope.model = {};
-                    $.LoadingOverlay('hide');
-                })
-            } else {
-                transaksiServices.post($scope.model).then(res => {
-                    pesan.Success("Process Success");
-                    $scope.model = {};
-                    $.LoadingOverlay('hide');
-                })
-
-            }
+            transaksiServices.put($scope.model).then(res => {
+                pesan.Success("Process Success");
+                $scope.model = {};
+                $.LoadingOverlay('hide');
+            })
         })
     }
 
@@ -201,6 +192,11 @@ function transaksiController($scope, transaksiServices, pesan) {
         $scope.model = angular.copy(param);
         $scope.kategori = $scope.datas.kategori.find(x => x.id = param.kategori_id);
         $scope.layanan = $scope.datas.layanan.find(x => x.id = param.layanan_id);
+    }
+
+    $scope.setItem = (param)=>{
+        $scope.model = param;
+        $("#update").modal('show');
     }
 
     $scope.delete = (param) => {
@@ -263,17 +259,25 @@ function addController($scope, transaksiServices, pesan, helperServices) {
 
     }
 
-    $scope.setBayar = ()=>{
+    $scope.setBayar = () => {
         var nilai = $scope.model.trx.bayar - parseFloat($scope.model.trx.total);
-        if(nilai>=0){
+        if (nilai >= 0) {
             $scope.model.trx.sisa = 0;
             $scope.model.trx.status = 'Lunas';
             $scope.model.trx.kembali = nilai;
-        }else{
+        } else {
             $scope.model.trx.kembali = 0;
-            $scope.model.trx.sisa = nilai*-1;
+            $scope.model.trx.sisa = nilai * -1;
             $scope.model.trx.status = 'Pending';
         }
+    }
+
+    $scope.setHitung = () => {
+        $scope.model.trx.total = 0
+        $scope.model.detail.forEach(element => {
+            element.total = parseFloat(element.harga)* parseFloat(element.jumlah);
+            $scope.model.trx.total += parseFloat(element.total);
+        });
     }
 
     $scope.add = (param) => {
@@ -305,12 +309,13 @@ function addController($scope, transaksiServices, pesan, helperServices) {
     }
 
     $scope.delete = (param) => {
-        pesan.dialog('Anda yakin ?', 'Ya', 'Tidak').then((x) => {
-            $.LoadingOverlay('show');
-            transaksiServices.deleted(param).then(res => {
-                pesan.Success("Process Success");
-                $.LoadingOverlay('hide');
-            })
+        pesan.dialog('Anda yakin ingin menghapus ?', 'Ya', 'Tidak', 'warning').then((x) => {
+            var index = $scope.model.detail.indexOf(param);
+            $scope.model.detail.splice(index, 1);
+            $scope.model.trx.total = 0
+            $scope.model.detail.forEach(element => {
+                $scope.model.trx.total += parseFloat(element.total);
+            });
         })
     }
 

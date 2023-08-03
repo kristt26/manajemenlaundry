@@ -13,7 +13,7 @@ class Layanan extends BaseController
     }
     public function index()
     {
-        return view('admin/layanan/index');
+        return view('admin/layanan/index', ['title'=>'Layanan']);
     }
 
     public function read() : object {

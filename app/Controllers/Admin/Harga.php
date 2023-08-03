@@ -19,7 +19,7 @@ class Harga extends BaseController
     }
     public function index()
     {
-        return view('admin/harga/index');
+        return view('admin/harga/index', ['title'=>'Harga']);
     }
 
     public function read() : object {

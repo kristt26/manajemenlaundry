@@ -13,7 +13,7 @@ class Kategori extends BaseController
     }
     public function index()
     {
-        return view('admin/kategori/index');
+        return view('admin/kategori/index', ['title'=>'Kategori']);
     }
 
     public function read() : object {
